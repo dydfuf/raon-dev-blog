@@ -1,7 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
-import { Button } from "./ui/button";
 import { ModeToggle } from "./ui/ModeToggle";
 ---
 
@@ -16,41 +15,17 @@ import { ModeToggle } from "./ui/ModeToggle";
         </h2>
         <nav>
           <div class="flex gap-4">
-            <HeaderLink href="/">Home</HeaderLink>
+            <!-- <HeaderLink href="/">Home</HeaderLink> -->
             <HeaderLink href="/blog">Blog</HeaderLink>
-            <HeaderLink href="/about">About</HeaderLink>
           </div>
         </nav>
       </div>
 
-      <div
-        class="flex flex-1 items-center justify-between gap-2 md:justify-end"
-      >
+      <div class="flex flex-1 items-center gap-2 justify-end">
         <nav class="flex items-center gap-0.5">
-          <!-- <Button asChild variant="ghost" size="icon" class="h-8 w-8 px-0">
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Icons.gitHub class="h-4 w-4" />
-              <span class="sr-only">GitHub</span>
-            </Link>
-          </Button> -->
           <ModeToggle client:load />
         </nav>
       </div>
     </div>
   </div>
 </header>
-
-<!-- <header>
-  <nav>
-    <h2><a href="/">{SITE_TITLE}</a></h2>
-    <div class="flex gap-4">
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
-    </div>
-  </nav>
-</header> -->
