@@ -7,6 +7,7 @@ export const PostSchema = z.object({
     profilePicture: z.string(),
   }),
   publishedAt: z.string(),
+  updatedAt: z.string(),
   title: z.string(),
   subtitle: z.string(),
   brief: z.string(),

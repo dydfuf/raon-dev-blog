@@ -1,7 +1,9 @@
 ---
+import { Button } from "@/components/ui/button";
 import FormattedDate from "../../../components/FormattedDate.astro";
 import { getAllPosts, getPost } from "../../../utils/hashnode/client";
 import RootLayout from "@/layouts/RootLayout.astro";
+import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
   const data = await getAllPosts();
@@ -14,35 +16,128 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.params;
 const post = await getPost(slug);
-console.log({ post });
 ---
 
 <RootLayout>
-  <article>
-    <div class="hero-image">
-      <!-- {
+  <article class="relative mx-auto max-w-[65ch] gap-x-6 px-4 py-10">
+    <Button asChild variant="ghost">
+      <a href="/blog" class="flex items-center gap-x-2 mb-16">
+        <Icon name="mdi:arrow-left" />
+        Back to List</a
+      >
+    </Button>
+    <div>
+      {
         post.coverImage.url && (
-          <img width={1020} height={510} src={post.coverImage.url} alt="" />
+          <img
+            width={1600}
+            height={840}
+            src={post.coverImage.url}
+            alt=""
+            class="rounded-lg"
+          />
         )
-      } -->
+      }
     </div>
-    <div class="prose">
-      <div class="title">
-        <div class="date">
+    <div
+      class="prose dark:prose-invert prose-h1:font-bold prose-p:text-justify prose-p:my-1 prose-img:rounded-sm prose-img:border prose-pre:dark:bg-[#27272a] prose-pre:bg-[#] mt-8"
+    >
+      <h1>{post.title}</h1>
+      <div>
+        <div class="flex items-center gap-x-4">
           <FormattedDate date={new Date(post.publishedAt)} />
-          <!-- {
-            post.updatedAt && (
-              <div class="last-updated-on">
-                Last updated on{" "}
-                <FormattedDate date={new Date(post.)} />
-              </div>
+          {
+            post.readTimeInMinutes && (
+              <div class="read-time">{post.readTimeInMinutes} min read</div>
             )
-          } -->
+          }
         </div>
-        <h1>{post.title}</h1>
         <hr />
       </div>
       <Fragment set:html={post.content.html} />
     </div>
   </article>
 </RootLayout>
+
+<style is:inline>
+  /* Monkai theme */
+  .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #23241f;
+  }
+
+  .hljs,
+  .hljs-subst,
+  .hljs-tag {
+    color: #f8f8f2;
+  }
+
+  .hljs-emphasis,
+  .hljs-strong {
+    color: #a8a8a2;
+  }
+
+  .hljs-bullet,
+  .hljs-link,
+  .hljs-literal,
+  .hljs-number,
+  .hljs-quote,
+  .hljs-regexp {
+    color: #ae81ff;
+  }
+
+  .hljs-code,
+  .hljs-section,
+  .hljs-selector-class,
+  .hljs-title {
+    color: #a6e22e;
+  }
+
+  .hljs-strong {
+    font-weight: 700;
+  }
+
+  .hljs-emphasis {
+    font-style: italic;
+  }
+
+  .hljs-attr,
+  .hljs-keyword,
+  .hljs-name,
+  .hljs-selector-tag {
+    color: #f92672;
+  }
+
+  .hljs-attribute,
+  .hljs-symbol {
+    color: #66d9ef;
+  }
+
+  .hljs-class .hljs-title,
+  .hljs-params {
+    color: #f8f8f2;
+  }
+
+  .hljs-addition,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-selector-attr,
+  .hljs-selector-id,
+  .hljs-selector-pseudo,
+  .hljs-string,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-variable {
+    color: #e6db74;
+  }
+
+  .hljs-comment,
+  .hljs-deletion,
+  .hljs-meta {
+    color: #75715e;
+  }
+
+  /* Monkai theme ends */
+</style>

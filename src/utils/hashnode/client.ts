@@ -40,6 +40,7 @@ export const getAllPosts = async () => {
                   slug
                 }
                 publishedAt
+                updatedAt
                 readTimeInMinutes
               }
             }
@@ -67,6 +68,7 @@ export const getPost = async (slug: string) => {
               profilePicture
             }
             publishedAt
+            updatedAt
             title
             subtitle
             readTimeInMinutes
