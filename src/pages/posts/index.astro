@@ -21,10 +21,7 @@ const posts = allPosts.sort(
       {
         posts.map((post) => (
           <li>
-            <a
-              href={`/blog/post/${post.node.slug}/`}
-              class="flex flex-col gap-2"
-            >
+            <a href={`/posts/${post.node.slug}/`} class="flex flex-col gap-2">
               <img
                 width={1600}
                 height={840}
