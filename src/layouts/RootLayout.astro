@@ -3,6 +3,7 @@ import BaseHead from "@/components/BaseHead.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import Analytics from "@vercel/analytics/astro";
 ---
 
 <script is:inline>
@@ -32,6 +33,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 <html lang="ko">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <Analytics />
   </head>
   <body class="bg-background text-foreground">
     <Header />
