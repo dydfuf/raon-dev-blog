@@ -8,6 +8,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 import icon from "astro-icon";
 
+import vercel from "@astrojs/vercel";
+
 export default defineConfig({
   site: import.meta.env.VITE_SITE_URL,
   integrations: [mdx(), sitemap(), react(), icon()],
@@ -19,4 +21,10 @@ export default defineConfig({
   redirects: {
     "/": "/posts",
   },
+
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
 });
