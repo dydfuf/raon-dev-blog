@@ -8,9 +8,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 import icon from "astro-icon";
 
-// https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: import.meta.env.VITE_SITE_URL,
   integrations: [mdx(), sitemap(), react(), icon()],
 
   vite: {
