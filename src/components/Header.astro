@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
+import { SITE_SHORT_TITLE } from "../consts";
 import { ModeToggle } from "./ui/ModeToggle";
 ---
 
@@ -11,10 +11,13 @@ import { ModeToggle } from "./ui/ModeToggle";
     <div class="container flex h-14 items-center">
       <div class="flex mr-4">
         <h2 class="mr-4 flex items-center gap-2 lg:mr-6">
-          <a href="/">{SITE_TITLE}</a>
+          <a href="/" class="flex items-center gap-2 font-bold text-2xl">
+            <img src="/avatar.svg" alt="logo" class="h-12 w-12" />
+            {SITE_SHORT_TITLE}
+          </a>
         </h2>
         <nav>
-          <div class="flex gap-4">
+          <div class="flex gap-4 items-center h-full">
             <!-- <HeaderLink href="/">Home</HeaderLink> -->
             <HeaderLink href="/posts">Posts</HeaderLink>
           </div>
